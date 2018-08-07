@@ -134,6 +134,8 @@ def calc_reg_values(config):
         Y, Z = calc_time_window_vars(config.getfloat(power_source, 'PL2_Duration_s'))
         TW2 = Y | (Z << 5)
 
+        # TODO are you sure there is a second window - can not find it in the volume 4 document
+        # TODO and whats the difference from 0x610 to 0x65c did you want to write to 0x65c instead?
         regs[power_source]['MSR_PKG_POWER_LIMIT'] = PL1 | (1 << 15) | (TW1 << 17) | (PL2 << 32) | (1 << 47) | (
             TW2 << 49)
 
